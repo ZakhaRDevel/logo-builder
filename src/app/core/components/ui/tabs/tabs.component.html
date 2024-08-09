@@ -1,0 +1,29 @@
+<div
+  class="tabs"
+  [class.open]="isOpen"
+  appClickOutside
+  (clickOutside)="closeDropdown()"
+  [ngClass]="[variant]"
+>
+  <button (click)="toggleDropdown()" class="drop-btn _btn small white">
+    Все
+    <app-arrow-icon class="icon" [width]="8" [height]="16"/>
+  </button>
+
+  <div class="tabs__list">
+    @if (isAll) {
+      <button class="tabs__btn" [class.active]="selectedItems.length === 0" (click)="onClear()">
+        Все
+      </button>
+    }
+    @for (tab of tabs; track tab) {
+      <button
+        class="tabs__btn"
+        [class.active]="selectedItems.includes(tab.value)"
+        (click)="toggleItem(tab)"
+      >
+        {{ tab.label }}
+      </button>
+    }
+  </div>
+</div>

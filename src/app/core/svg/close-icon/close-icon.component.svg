@@ -1,0 +1,5 @@
+<svg [attr.height]="height" [attr.width]="width" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M31.9998 2.23256L29.7676 0L15.9999 13.77L2.23219 5.07563e-05L0 2.23261L13.7677 16.0025L0.00507871 29.7674L2.23727 32L15.9999 18.2351L29.7625 32L31.9947 29.7674L18.232 16.0025L31.9998 2.23256Z"
+        fill="currentColor" />
+</svg>

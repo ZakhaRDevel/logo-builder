@@ -1,0 +1,298 @@
+@use 'sass:map';
+@use 'sass:math';
+
+//breakpoints
+$tiny: 480px;
+$small: 768px;
+$tablet: 1024px;
+$medium: 1280px;
+$large: 1441px;
+$m-large: 1850px;
+$x-large: 2560px;
+
+//colors
+$black: #000000;
+$gray: #526773;
+$white: #ffffff;
+$light-blue: #e2ecf2;
+$blue50: #f1f5f9;
+$bg: $light-blue;
+$mint: #b9ddd4;
+$mint-light: #dceee9;
+$green-light: #36cf3c;
+$green: #50ab64;
+$blue-mint-gradient-vertical: linear-gradient(
+    180deg,
+    rgba(164, 205, 232, 1) 0%,
+    rgba(176, 218, 208, 1) 90%
+);
+
+$blue-mint-gradient: linear-gradient(90deg, rgba(163, 203, 230, 1) 0%, rgb(95, 252, 175) 100%);
+$blue-pink-gradient: linear-gradient(90deg, rgba(136, 184, 217, 1) 0%, rgba(225, 213, 217, 1) 85%);
+$blue-orange-gradient: linear-gradient(
+    141deg,
+    rgba(182, 212, 214, 1) 42%,
+    rgba(245, 223, 215, 1) 64%
+);
+$pink-yellow-gradient: linear-gradient(
+    13deg,
+    rgba(195, 204, 205, 1) 22%,
+    rgba(221, 196, 205, 1) 42%,
+    rgba(235, 220, 190, 1) 70%,
+    rgba(184, 205, 212, 1) 84%
+);
+$pink-yellow-blue-gradient: linear-gradient(
+    13deg,
+    rgba(221, 196, 205, 1) 20%,
+    rgba(235, 220, 190, 1) 54%,
+    rgba(135, 184, 214, 1) 73%
+);
+$pink-orange-green-gradient: linear-gradient(
+    132deg,
+    rgba(211, 193, 205, 1) 20%,
+    rgba(228, 213, 137, 1) 50%,
+    rgba(224, 236, 192, 1) 70%
+);
+
+$red: #c82323;
+$yellow-light: #feedc1;
+
+$font-color-default: $black;
+$font-family-primary: sans-sarif;
+$font-spacing-base: -0.02em;
+$font-weight-base: 400;
+
+$font-sizes: (
+  large: (
+    font-size: 20,
+    line-height: 24,
+  ),
+  medium: (
+    font-size: 15,
+    line-height: 20,
+  ),
+  Xsmall: (
+    font-size: 14,
+    line-height: 14,
+  ),
+  small: (
+    font-size: 12,
+    line-height: 15,
+  ),
+  h1: (
+    font-size: 72,
+    line-height: 72,
+  ),
+  h2: (
+    font-size: 56,
+    line-height: 64,
+  ),
+  h3: (
+    font-size: 48,
+    line-height: 55,
+  ),
+  h4: (
+    font-size: 40,
+    line-height: 48,
+  ),
+  h5: (
+    font-size: 32,
+    line-height: 34,
+  ),
+  h6: (
+    font-size: 28,
+    line-height: 32,
+  ),
+);
+
+$tablet-font-sizes: (
+  large: (
+    font-size: 13,
+    line-height: 16,
+  ),
+  medium: (
+    font-size: 11,
+    line-height: 14,
+  ),
+  Xsmall: (
+    font-size: 10,
+    line-height: 10,
+  ),
+  small: (
+    font-size: 9,
+    line-height: 11,
+  ),
+  h1: (
+    font-size: 51,
+    line-height: 51,
+  ),
+  h2: (
+    font-size: 40,
+    line-height: 45,
+  ),
+  h3: (
+    font-size: 34,
+    line-height: 40,
+  ),
+  h4: (
+    font-size: 28,
+    line-height: 34,
+  ),
+  h5: (
+    font-size: 23,
+    line-height: 25,
+  ),
+  h6: (
+    font-size: 20,
+    line-height: 24,
+  ),
+);
+
+$tiny-font-sizes: (
+  large: (
+    font-size: 11,
+    line-height: 14,
+  ),
+  h1: (
+    font-size: 26,
+    line-height: 30,
+  ),
+  h2: (
+    font-size: 22,
+    line-height: 24,
+  ),
+  h3: (
+    font-size: 18,
+    line-height: 22,
+  ),
+  h4: (
+    font-size: 16,
+    line-height: 18,
+  ),
+  h5: (
+    font-size: 14,
+    line-height: 16,
+  ),
+  h6: (
+    font-size: 13,
+    line-height: 16,
+  ),
+);
+
+$font-size-a11y-levels-count: 6;
+$font-size-a11y-levels-step: 0.075;
+$letter-spacing-a11y-levels-count: 3;
+$letter-spacing-a11y-levels-step: 0.1;
+
+@mixin generate-font-size-levels($base-font-sizes, $levels: 5, $step: 1.1) {
+  &.font-size-level-1 {
+    @each $key, $value in $base-font-sizes {
+      --font-size-#{$key}: #{map-get($value, font-size)}px;
+      --line-height-#{$key}: #{map-get($value, line-height)}px;
+    }
+  }
+
+  @for $i from 2 through $levels {
+    $multiplier: 1 + (($i - 1) * $step);
+    &.font-size-level-#{$i} {
+      @each $key, $value in $base-font-sizes {
+        --font-size-#{$key}: #{(map-get($value, font-size) * $multiplier)}px;
+        --line-height-#{$key}: #{(map-get($value, line-height) * $multiplier)}px;
+      }
+    }
+  }
+}
+
+@mixin generate-letter-spacing-levels($base-letter-spacings, $levels: 5, $step: 0.05) {
+  &.letter-space-level-1 {
+    @each $key, $value in $base-letter-spacings {
+      --letter-spacing-#{$key}: #{$value};
+    }
+  }
+
+  @for $i from 2 through $levels {
+    $increment: (($i - 1) * $step);
+    &.letter-space-level-#{$i} {
+      @each $key, $value in $base-letter-spacings {
+        --letter-spacing-#{$key}: #{$value + $increment};
+      }
+    }
+  }
+}
+
+$letter-spacings: (
+  base: $font-spacing-base,
+  //TODO: add more letter spacing values
+  //wide: 0,
+  //wider: 0.1em,
+  //widest: 0.15em
+);
+
+html {
+  @include generate-font-size-levels(
+      $font-sizes,
+      $font-size-a11y-levels-count,
+      $font-size-a11y-levels-step
+  );
+  @include generate-letter-spacing-levels(
+      $letter-spacings,
+      $letter-spacing-a11y-levels-count,
+      $letter-spacing-a11y-levels-step
+  );
+}
+
+@media only screen and (max-width: $tablet) {
+  html {
+    @include generate-font-size-levels(
+        $tablet-font-sizes,
+        $font-size-a11y-levels-count,
+        $font-size-a11y-levels-step
+    );
+    @include generate-letter-spacing-levels(
+        $letter-spacings,
+        $letter-spacing-a11y-levels-count,
+        $letter-spacing-a11y-levels-step
+    );
+  }
+}
+
+@media only screen and (max-width: $tiny) {
+  html {
+    @include generate-font-size-levels(
+        $tiny-font-sizes,
+        $font-size-a11y-levels-count,
+        $font-size-a11y-levels-step
+    );
+    @include generate-letter-spacing-levels(
+        $letter-spacings,
+        $letter-spacing-a11y-levels-count,
+        $letter-spacing-a11y-levels-step
+    );
+  }
+}
+
+:root {
+  --indent-Xlarge: 72px;
+  --indent-large: 56px;
+  --indent-Xmedium: 48px;
+  --indent-medium: 40px;
+  --indent-small: 32px;
+  --indent-Xtiny: 24px;
+  --indent-tiny: 16px;
+
+  @media only screen and (max-width: $tablet) {
+    --indent-Xlarge: 52px;
+    --indent-large: 40px;
+    --indent-Xmedium: 32px;
+    --indent-medium: 28px;
+    --indent-small: 24px;
+    --indent-Xtiny: 15px;
+    --indent-tiny: 12px;
+  }
+
+  @media only screen and (max-width: $tiny) {
+    --indent-Xlarge: 48px;
+    --indent-large: 24px;
+    --indent-tiny: 8px;
+  }
+}

@@ -1,0 +1,30 @@
+<div class="logo-builder" [class.dragging]="logoBackgroundImage">
+  <app-logo-builder-controls
+    class="logo-builder__controls"
+    (iconChange)="onIconChange($event)"
+    (textChange)="onTextChange($event)"
+    (backgroundColorChange)="onBackgroundColorChange($event)"
+    (backgroundImageChange)="onBackgroundImageChange($event)"
+    (textColorChange)="onTextColorChange($event)"
+    (iconBackgroundImageChange)="onIconBackgroundImageChange($event)"
+    (iconColorChange)="onIconColorChange($event)"
+    (heightChange)="onHeightChange($event)"
+    (widthChange)="onWidthChange($event)"
+    (formatChange)="onFormatChange($event)"
+  ></app-logo-builder-controls>
+  <div
+    class="logo-builder__preview"
+    (mousedown)="startDrag($event)"
+    (mouseup)="stopDrag($event)"
+    (mousemove)="drag($event)"
+    (touchstart)="startDrag($event)"
+    (touchend)="stopDrag($event)"
+    (touchmove)="drag($event)"
+  >
+    <div class="wrapper">
+      <canvas class="logo-canvas" [width]="768" [height]="420" #backgroundCanvas></canvas>
+      <canvas class="background-canvas" [width]="768" [height]="420" #logoCanvas></canvas>
+    </div>
+    <button (click)="downloadImage()" class="_btn outline white medium">Завантажити</button>
+  </div>
+</div>

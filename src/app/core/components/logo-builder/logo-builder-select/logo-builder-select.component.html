@@ -1,0 +1,10 @@
+<ng-select
+  class="logo-builder-select"
+  [clearable]="false"
+  [items]="['PNG', 'JPG', 'PDF', 'PSD']"
+  (change)="onFormatChange($event)"
+  [searchable]="false"
+  dropdownPosition="bottom"
+  [(ngModel)]="format"
+>
+</ng-select>

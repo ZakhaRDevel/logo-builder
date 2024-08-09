@@ -1,0 +1,45 @@
+<div class="input-files" [ngClass]="color">
+  <div class="file-drop-zone" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+    <input
+      type="file"
+      #fileInput
+      (change)="onFileSelected($event)"
+      [accept]="allowedFormats"
+      multiple
+      hidden
+    />
+    <button class="file-drop-zone__btn" type="button" (click)="fileInput.click()"></button>
+    <div class="file-drop-zone__wrapper">
+      <div class="text">{{ text }}</div>
+      <div class="option">{{ option }}</div>
+    </div>
+  </div>
+
+  <div class="errors">
+    @for (errorMessage of errorMessages; track errorMessage) {
+      <div class="error">
+        {{ errorMessage }}
+      </div>
+    }
+    @if (errors.length) {
+      <div class="error">
+        {{ errors[0] }}
+      </div>
+    }
+  </div>
+
+  @if (control && control.controls.length > 0) {
+    <div class="input-files__list">
+      @for (fileCtrl of control.controls; track i; let i = $index) {
+        @if (fileCtrl?.value) {
+          <div class="input-files__list-item">
+            <span>{{ i + 1 }}. {{ fileCtrl.value.name }}</span>
+            <button type="button" (click)="removeFile(i)">
+              <img ngSrc="assets/img/icons/close.svg" alt="" height="12" width="12"/>
+            </button>
+          </div>
+        }
+      }
+    </div>
+  }
+</div>

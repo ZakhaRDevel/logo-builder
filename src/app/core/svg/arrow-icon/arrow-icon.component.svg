@@ -1,0 +1,3 @@
+<svg [attr.height]="height" [attr.width]="width" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M9.81393 0.697693L1.99998 8.51165L9.81393 16.3256" stroke="currentColor" stroke-width="2" />
+</svg>

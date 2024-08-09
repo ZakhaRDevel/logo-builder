@@ -1,0 +1,48 @@
+<div class="background-selector" appClickOutside (clickOutside)="closeModal()">
+  <div>
+    <button class="_btn outline small white uppercase" (click)="openModal()">{{ btnText }}</button>
+  </div>
+  @if (showModal) {
+    <div class="modal">
+      <div class="modal__header">
+        <h6>{{ btnText }}</h6>
+        <button class="close" (click)="closeModal()">
+          <app-close-icon class="icon" [width]="24" [height]="24"/>
+        </button>
+      </div>
+      @if (isColorChange && isImageChange) {
+        <div class="modal__actions">
+          <button (click)="activeTab = 'color'" [class.active]="activeTab === 'color'" class="btn">
+            Обрати колір
+          </button>
+          <button (click)="activeTab = 'image'" [class.active]="activeTab === 'image'" class="btn">
+            Завантажити картинку
+          </button>
+        </div>
+      }
+      <div class="modal__content">
+        @if (activeTab === 'color' && isColorChange) {
+          <div>
+            <color-sketch
+              [width]="432"
+              [color]="color"
+              (onChangeComplete)="onColorChange($event)"
+            />
+          </div>
+        }
+        @if (activeTab === 'image' && isImageChange) {
+          <div>
+            <app-input-files
+              [maxSize]="1000000"
+              [allowedFormats]="['image/jpeg', 'image/png']"
+              [maxFiles]="1"
+              text="Завантажити зображення"
+              option="До 1 Мб"
+              (onFileAdd)="onImageChange($event)"
+            />
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

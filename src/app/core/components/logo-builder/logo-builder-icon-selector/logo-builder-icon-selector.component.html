@@ -1,0 +1,26 @@
+<div class="icon-selector" appClickOutside (clickOutside)="closeModal()">
+  <div>
+    <button class="_btn outline small white uppercase" (click)="openModal()">іконка</button>
+  </div>
+
+  @if (showModal) {
+    <div class="modal">
+      <div class="modal__header">
+        <h6>Оберіть іконку</h6>
+        <button class="close" (click)="closeModal()">
+          <app-close-icon class="icon" [width]="24" [height]="24"/>
+        </button>
+      </div>
+
+      <div class="modal__content">
+        <div class="icon-grid">
+          @for (icon of icons; track icon) {
+            <div class="icon-item" (click)="selectIcon(icon)">
+              <img [src]="icon" alt="icon"/>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>

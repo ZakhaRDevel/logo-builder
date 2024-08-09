@@ -1,0 +1,54 @@
+@import 'variables';
+
+.logo-builder {
+  display: grid;
+  grid-template-columns: 496px minmax(auto, 768px);
+  grid-template-rows: 1fr;
+  justify-content: space-between;
+  gap: var(--indent-Xtiny);
+  align-items: center;
+
+  @media only screen and (max-width: $large) {
+    grid-template-columns: 100%;
+  }
+
+  &.dragging {
+    .logo-builder__preview {
+      .wrapper {
+        cursor: move;
+      }
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: relative;
+  }
+
+  &__preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--indent-Xmedium);
+
+    border: 1px solid #000;
+
+    .wrapper {
+      max-width: 100%;
+      width: max-content;
+      position: relative;
+
+      canvas {
+        max-width: 100%;
+      }
+
+      .background-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}

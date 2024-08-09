@@ -1,0 +1,42 @@
+<div class="controls">
+  <div class="controls__wrapper">
+    <input type="text" [(ngModel)]="text" (input)="onTextInputChange($event)" />
+  </div>
+  <div class="controls__wrapper">
+    <div class="group">
+      <div class="group__label">Розмір</div>
+      <div class="group__wrapper">
+        <input type="number" [(ngModel)]="height" (input)="onHeightChange($event)" />
+        <input type="number" [(ngModel)]="width" (input)="onWidthChange($event)" />
+      </div>
+    </div>
+    <div class="group">
+      <div class="group__label">Формат</div>
+      <div class="group__wrapper">
+        <app-logo-builder-select (change)="onFormatChange($event)" />
+      </div>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <app-logo-builder-background-selector
+      btnText="Фонове Зображення"
+      [color]="iconBackgroundColor"
+      (imageSelected)="onBackgroundImageChange($event)"
+      (colorSelected)="onBackgroundColorChange($event)"
+    />
+    <app-logo-builder-background-selector
+      btnText="Зображення у логотипі"
+      [color]="iconBackgroundColor"
+      (imageSelected)="onIconBackgroundImageChange($event)"
+      (colorSelected)="onIconColorChange($event)"
+    />
+    <app-logo-builder-background-selector
+      btnText="Колір тексту"
+      [color]="textColor"
+      (colorSelected)="onTextColorChange($event)"
+      [isImageChange]="false"
+    />
+    <app-logo-builder-icon-selector (iconSelected)="onIconChange($event)" />
+  </div>
+</div>
