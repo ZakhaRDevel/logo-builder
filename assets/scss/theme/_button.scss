@@ -1,0 +1,290 @@
+@import 'variables';
+
+._btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: max-content;
+  height: max-content;
+  border: 2px solid transparent;
+  border-radius: 56px;
+  cursor: pointer;
+  transition: background-color 0.3s,
+  border-color 0.3s,
+  color 0.3s,
+  opacity 0.3s;
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .icon {
+    display: flex;
+  }
+
+  &.uppercase {
+    text-transform: uppercase;
+  }
+
+  &.underline {
+    text-decoration: underline;
+  }
+
+  // Color
+
+  &.black {
+    background-color: $black;
+    color: $white;
+
+    @media (hover: hover) {
+      &:hover {
+        &:not(:disabled) {
+          background-color: $white;
+          border-color: $black;
+          color: $black;
+        }
+      }
+    }
+
+    &:active {
+      &:not(:disabled) {
+        background-color: $white;
+        border-color: $black;
+        color: $black;
+      }
+    }
+  }
+
+  &.white {
+    background-color: $white;
+    color: $black;
+
+    @media (hover: hover) {
+      &:hover {
+        &:not(:disabled) {
+          background-color: $black;
+          border-color: $white;
+          color: $white;
+        }
+      }
+    }
+
+    &:active {
+      &:not(:disabled) {
+        background-color: $black;
+        border-color: $white;
+        color: $white;
+      }
+    }
+  }
+
+  &.outline {
+    border-color: $black;
+    color: $black;
+    background-color: transparent;
+
+    @media (hover: hover) {
+      &:hover {
+        &:not(:disabled) {
+          background-color: $white;
+        }
+      }
+    }
+
+    &:active {
+      &:not(:disabled) {
+        background-color: $white;
+      }
+    }
+
+    &.white {
+      border-color: $white;
+      color: $white;
+
+      @media (hover: hover) {
+        &:hover {
+          &:not(:disabled) {
+            background-color: $white;
+            color: black;
+            border-color: $black;
+          }
+        }
+      }
+
+      &:active {
+        &:not(:disabled) {
+          background-color: $white;
+          color: black;
+          border-color: $black;
+        }
+      }
+    }
+  }
+
+  // Size
+  &.large {
+    padding: 20px 30px;
+    font-size: 26px;
+    line-height: 28px;
+
+    @media only screen and (max-width: $tablet) {
+      padding: 16px 24px;
+      font-size: 18px;
+      line-height: 20px;
+    }
+  }
+
+  &.medium-plus {
+    height: 60px;
+    padding: 10px 22px;
+    font-size: 18px;
+    line-height: 28px;
+
+    @media only screen and (max-width: $tablet) {
+      height: 48px;
+      padding: 8px 16px;
+      font-size: 13px;
+      line-height: 20px;
+    }
+  }
+
+  &.medium {
+    height: 52px;
+    padding: 10px 22px;
+    font-size: 18px;
+    line-height: 28px;
+
+    @media only screen and (max-width: $tablet) {
+      height: 40px;
+      padding: 8px 16px;
+      font-size: 13px;
+      line-height: 20px;
+    }
+  }
+
+  &.small {
+    padding: 14px 18px;
+    font-size: 14px;
+    line-height: 16px;
+
+    @media only screen and (max-width: $tablet) {
+      padding: 10px 13px;
+      font-size: 10px;
+      line-height: 12px;
+    }
+  }
+
+  &.transparent {
+    background-color: transparent;
+    color: $white;
+    border: 2px solid;
+  }
+
+  &.filter {
+    background-color: $white;
+    color: $black;
+
+    &:hover {
+      background-color: $mint;
+    }
+
+    &:active {
+      &:not(:disabled) {
+        background-color: $white;
+        border-color: $black;
+        color: $black;
+      }
+    }
+  }
+
+  // Width
+  &.full {
+    width: 100%;
+  }
+
+  // Type
+
+  &.icon-transparent {
+    padding: 0;
+    background: transparent;
+    color: $black;
+    border: none;
+    white-space: initial;
+
+    &.default {
+      gap: 8px;
+
+      .text {
+        max-width: 140px;
+        font-size: 14px;
+        line-height: 1;
+
+        @media only screen and (max-width: $tablet) {
+          font-size: 10px;
+        }
+      }
+    }
+
+    &.secondary {
+      gap: 4px;
+
+      .text {
+        font-size: var(--font-size-medium);
+        line-height: var(--line-height-medium);
+      }
+    }
+
+    .icon {
+      flex-shrink: 0;
+
+      @media only screen and (max-width: $tablet) {
+        max-height: 18px;
+        max-width: 18px;
+      }
+    }
+
+    .text {
+      text-align: left;
+    }
+  }
+
+  &.circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    @media only screen and (max-width: $tablet) {
+      max-height: 40px;
+      max-width: 40px;
+    }
+
+    &.black {
+      border: 2px solid $black;
+      background-color: $black;
+      color: $white;
+
+      @media (hover: hover) {
+        &:hover {
+          &:not(:disabled) {
+            background-color: $black;
+            color: $white;
+            border-color: $black;
+          }
+        }
+      }
+
+      &:active {
+        &:not(:disabled) {
+          background-color: $white;
+          color: black;
+          border-color: $black;
+        }
+      }
+    }
+  }
+}

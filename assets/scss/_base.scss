@@ -1,0 +1,249 @@
+@import 'variables';
+@import 'theme/theme';
+
+* {
+  box-sizing: border-box;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  --mat-dialog-transition-duration: 0ms !important;
+
+  ::-moz-focus-outer,
+  ::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: $font-family-primary;
+  font-size: var(--font-size-large);
+  font-weight: $font-weight-base;
+  line-height: var(--line-height-large);
+  letter-spacing: var(--letter-spacing-base);
+  color: $black;
+  transition: opacity 2.5s;
+  visibility: visible;
+  opacity: 1;
+  background: #fff;
+
+  &.bw-filter {
+    filter: grayscale(100%);
+  }
+}
+
+a {
+  color: $font-color-default;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h5,
+h6 {
+  font-family: $font-family-primary;
+  letter-spacing: var(--letter-spacing-base);
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+  line-height: var(--line-height-h4);
+}
+
+h5 {
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+}
+
+h6 {
+  font-size: var(--font-size-h6);
+  line-height: var(--line-height-h6);
+}
+
+ul {
+  margin: 0;
+  padding: 0 0 0 25px;
+  list-style: disc;
+  white-space: normal;
+  font-size: var(--font-size-medium);
+  line-height: var(--line-height-medium);
+  @media only screen and (max-width: $tablet) {
+    padding: 0 0 0 15px;
+  }
+}
+
+ol {
+  margin: 0;
+  padding: 0 0 0 25px;
+  white-space: normal;
+  font-size: var(--font-size-medium);
+  line-height: var(--line-height-medium);
+
+  @media only screen and (max-width: $tablet) {
+    padding: 0 0 0 15px;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+blockquote {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+input,
+textarea,
+select,
+button {
+  color: $font-color-default;
+  font-family: $font-family-primary;
+  letter-spacing: var(--letter-spacing-base);
+  font-size: var(--font-size-large);
+  line-height: var(--line-height-large);
+}
+
+input[autocomplete='off']::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  height: 0;
+  width: 0;
+  margin: 0;
+}
+
+input {
+  -webkit-padding-start: 0;
+
+  &::-webkit-credentials-auto-fill-button {
+    position: absolute;
+    right: 0;
+    top: 30%;
+  }
+}
+
+input[type='text'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+input[type='password'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+input,
+ng-select {
+  &::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+}
+
+mat-dialog-container {
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-shadow: none !important;
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(20, 20, 20, 0.6);
+}
+
+.cdk-global-overlay-wrapper {
+  padding: 0;
+
+  @media only screen and (max-width: $tablet) {
+    padding: 0;
+  }
+}
+
+.cdk-overlay-pane {
+  max-width: 100% !important;
+  border-radius: 12px;
+}
+
+.cdk-overlay-container .mat-dialog-container {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+
+  .mdc-dialog__content {
+    max-height: calc(100vh - 190px);
+    padding: 0;
+    color: unset;
+    line-height: normal !important;
+    font: unset;
+    letter-spacing: unset;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+.pb75 {
+  padding-bottom: 75px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 16px;
+
+  @media only screen and (max-width: $small) {
+    grid-template-columns: 1fr;
+  }
+}
